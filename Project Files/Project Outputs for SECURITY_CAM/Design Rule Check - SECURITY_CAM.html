@@ -1,0 +1,447 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">25.09.2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">20:38:31</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc" class="file"><acronym title="D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc">D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">33</td></tr>
+</table>
+</td>
+</table><a name="IDEJ5DMN344VSPBJ5QHPTSZA30ROHWPLS4MWGG2BKUMRZL5EEQG0RH"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDL3G2GFMPZACRHTWHN3VEHVZXOLQRWMJVJIPVXUF2T1TBFBZLFXEC">Clearance Constraint (Gap=9mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID35IDKHNMRD1XFV31IIJPH52VJF1A3DKXA0AQBAKT4JWLPVWD5KHD">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5NIW45UESMCQGJBSBQPU3NTWRJK0FLLDJSSFSKJUBIX5M5OU0CH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOXRRWTQBGGXFLMRWSW21QKXUUMLUJWR2IWRBJOFJCKV5UXLP1YZN">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUVQYLT2Q45PVL12O3UEUPBOL2ERVDGPKSA5K05KDKZPVF4QZPYVH">Width Constraint (Min=8mil) (Max=70mil) (Preferred=11mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2G3CBKQKNUTAINSSPZP0DNIIYHWHO15SVPAX2CKO3C2ROVO4M0OB">SMD To Corner (Distance=1mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUGXEHLARANBGN31OU5KS0ARCWPKOWXKGF4JON2YLRPWV0FPBE1F">Power Plane Connect Rule(Relief Connect )(Expansion=15mil) (Conductor Width=15mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDN42XPJTIHG0ELJR3CM00KONDUG5GQNSVPLR30AJWVMLBF2IHXOFJ">Hole Size Constraint (Min=1mil) (Max=200mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVR2Z51LHHORCEER1TOX3FNN1XJ13V2ABV4A2VBBSXXM3IOK5DOHL">Hole To Hole Clearance (Gap=3mil) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXICNH1VYUK3GI1V220RYHJNG4DMF5B0D1D2SYBHXPYKGALHWFXFL">Minimum Solder Mask Sliver (Gap=0.5mil) (All),(All)</a></td>
+<td class="column2">24</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGZ1CTSZRBWGAB5AWZHWWFZMPYBGY1BMDYAUGYBWPP0ZXEETU4BG">Silk To Solder Mask (Clearance=5mil) (Disabled)(IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0EK3JIVFOGFABEPBKRNEBHP5XLJ0Z41OQYZFQXNTYUBKWGANJMUK">Silk to Silk (Clearance=0mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOWXRE1YJZPILEJILG5Y1HPF5ILIBFCISXYMHH1MBSTBPZUFZIRZP">Net Antennae (Tolerance=10mil) (All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDE4WZVS1J35OEOT3UNELQBS50YJ54HIPDSVBSTEDWUXWV4PXTDNW">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">33</td>
+</tr>
+</table><br><a name="ID5NIW45UESMCQGJBSBQPU3NTWRJK0FLLDJSSFSKJUBIX5M5OU0CH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1088.111mil|Location2.X=1382.43mil|Location1.Y=3419.114mil|Location2.Y=4081.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1088.111mil|Location2.X=1382.43mil|Location1.Y=3419.114mil|Location2.Y=4081.181mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-2(137.796mil,2795.276mil) on Multi-Layer And Pad J4-2(258.414mil,2261.633mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUGXEHLARANBGN31OU5KS0ARCWPKOWXKGF4JON2YLRPWV0FPBE1F"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Power Plane Connect Rule(Relief Connect )(Expansion=15mil) (Conductor Width=15mil) (Air Gap=10mil) (Entries=4) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.638mil|Location2.X=3811.89mil|Location1.Y=1565.078mil|Location2.Y=1659.33mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.638mil|Location2.X=3811.89mil|Location1.Y=1565.078mil|Location2.Y=1659.33mil|Absolute=True">Starved Thermal on GROUND: Pad J7-2(2764.764mil,375.983mil) on Multi-Layer. Blocked 4 out of 4 entries.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3977.48mil|Location2.X=4071.732mil|Location1.Y=1607.402mil|Location2.Y=1701.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3977.48mil|Location2.X=4071.732mil|Location1.Y=1607.402mil|Location2.Y=1701.654mil|Absolute=True">Starved Thermal on GROUND: Pad J8-2(3024.606mil,418.308mil) on Multi-Layer. Blocked 4 out of 4 entries.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVR2Z51LHHORCEER1TOX3FNN1XJ13V2ABV4A2VBBSXXM3IOK5DOHL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=3mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2993.5mil|Location2.X=2996.5mil|Location1.Y=2749.72mil|Location2.Y=2752.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2993.5mil|Location2.X=2996.5mil|Location1.Y=2749.72mil|Location2.Y=2752.72mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 3mil) Between Via (1995mil,1515mil) from Top Layer to Bottom Layer And Via (1995mil,1515mil) from Top Layer to Bottom Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3068.5mil|Location2.X=3071.5mil|Location1.Y=2779.72mil|Location2.Y=2782.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3068.5mil|Location2.X=3071.5mil|Location1.Y=2779.72mil|Location2.Y=2782.72mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 3mil) Between Via (2070mil,1545mil) from Top Layer to Bottom Layer And Via (2070mil,1545mil) from Top Layer to Bottom Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.5mil|Location2.X=3346.5mil|Location1.Y=2994.72mil|Location2.Y=2997.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.5mil|Location2.X=3346.5mil|Location1.Y=2994.72mil|Location2.Y=2997.72mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 3mil) Between Via (2345mil,1760mil) from Top Layer to Bottom Layer And Via (2345mil,1760mil) from Top Layer to Bottom Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXICNH1VYUK3GI1V220RYHJNG4DMF5B0D1D2SYBHXPYKGALHWFXFL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.5mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,548.641mil) on Top Layer And Pad U6-39(569.882mil,584.764mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,548.641mil) on Top Layer And Pad U6-39(606.004mil,548.641mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,584.764mil) on Multi-Layer And Pad U6-39(569.882mil,620.885mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,620.885mil) on Top Layer And Pad U6-39(569.882mil,657.008mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,620.885mil) on Top Layer And Pad U6-39(606.004mil,620.885mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1569.007mil|Location2.X=1570.757mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,657.008mil) on Multi-Layer And Pad U6-39(569.882mil,693.13mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1597.206mil|Location2.X=1598.956mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(569.882mil,693.13mil) on Top Layer And Pad U6-39(606.004mil,693.13mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(606.004mil,548.641mil) on Multi-Layer And Pad U6-39(642.126mil,548.641mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(606.004mil,620.885mil) on Multi-Layer And Pad U6-39(642.126mil,620.885mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.052mil|Location2.X=1614.802mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(606.004mil,693.13mil) on Multi-Layer And Pad U6-39(642.126mil,693.13mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,548.641mil) on Top Layer And Pad U6-39(642.126mil,584.764mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,548.641mil) on Top Layer And Pad U6-39(678.248mil,548.641mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,584.764mil) on Multi-Layer And Pad U6-39(642.126mil,620.885mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,620.885mil) on Top Layer And Pad U6-39(642.126mil,657.008mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,620.885mil) on Top Layer And Pad U6-39(678.248mil,620.885mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1641.251mil|Location2.X=1643.001mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,657.008mil) on Multi-Layer And Pad U6-39(642.126mil,693.13mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1669.45mil|Location2.X=1671.2mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(642.126mil,693.13mil) on Top Layer And Pad U6-39(678.248mil,693.13mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1783.987mil|Location2.Y=1785.737mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(678.248mil,548.641mil) on Multi-Layer And Pad U6-39(714.37mil,548.641mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1856.231mil|Location2.Y=1857.981mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(678.248mil,620.885mil) on Multi-Layer And Pad U6-39(714.37mil,620.885mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1685.296mil|Location2.X=1687.046mil|Location1.Y=1928.475mil|Location2.Y=1930.225mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(678.248mil,693.13mil) on Multi-Layer And Pad U6-39(714.37mil,693.13mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1812.186mil|Location2.Y=1813.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(714.37mil,548.641mil) on Top Layer And Pad U6-39(714.37mil,584.764mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1828.032mil|Location2.Y=1829.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(714.37mil,584.764mil) on Multi-Layer And Pad U6-39(714.37mil,620.885mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1884.43mil|Location2.Y=1886.18mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(714.37mil,620.885mil) on Top Layer And Pad U6-39(714.37mil,657.008mil) on Multi-Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1713.495mil|Location2.X=1715.245mil|Location1.Y=1900.276mil|Location2.Y=1902.026mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.098mil &lt; 0.5mil) Between Pad U6-39(714.37mil,657.008mil) on Multi-Layer And Pad U6-39(714.37mil,693.13mil) on Top Layer [Top Solder] Mask Sliver [0.098mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDOWXRE1YJZPILEJILG5Y1HPF5ILIBFCISXYMHH1MBSTBPZUFZIRZP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=10mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.39mil|Location2.X=1189.259mil|Location1.Y=4207.892mil|Location2.Y=4355.24mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1098.39mil|Location2.X=1189.259mil|Location1.Y=4207.892mil|Location2.Y=4355.24mil|Absolute=True">Net Antennae: Via (137.796mil,3011.077mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3525.595mil|Location2.X=3616.463mil|Location1.Y=3901.815mil|Location2.Y=4049.162mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3525.595mil|Location2.X=3616.463mil|Location1.Y=3901.815mil|Location2.Y=4049.162mil|Absolute=True">Net Antennae: Via (2565mil,2705mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3550.595mil|Location2.X=3641.463mil|Location1.Y=3906.815mil|Location2.Y=4054.162mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ASLI\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3550.595mil|Location2.X=3641.463mil|Location1.Y=3906.815mil|Location2.Y=4054.162mil|Absolute=True">Net Antennae: Via (2590mil,2710mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

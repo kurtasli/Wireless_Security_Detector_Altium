@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: C:\Users\asli\Desktop\Hardware Design\Projects\InProgress\SECURITY_CAM\Project Files\SECURITY_CAM.PcbDoc
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=1.97
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=9.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=8.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
